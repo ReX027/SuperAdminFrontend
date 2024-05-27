@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import
+import { userLogin } from "../../features/auth/authActions";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
+  const dispatch = useDispatch();
   const handleLogin = async () => {
     try {
-      const response = await dispatch(
+      const response = dispatch(
         userLogin({
-          email: sanitizedEmail,
-          password: sanitizedPassword,
+          email: email,
+          password: password,
         })
       );
       console.log("Logged in successfully:", response.data);
