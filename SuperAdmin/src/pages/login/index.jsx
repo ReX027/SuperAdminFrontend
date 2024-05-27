@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-
+import { useDispatch, useSelector } from "react-redux";
+import
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -8,7 +8,12 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("/login", { email, password });
+      const response = await dispatch(
+        userLogin({
+          email: sanitizedEmail,
+          password: sanitizedPassword,
+        })
+      );
       console.log("Logged in successfully:", response.data);
     } catch (error) {
       setErrorMessage("Invalid email or password");
