@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { combineSlices } from "@reduxjs/toolkit";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("ranveer@rework.club");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
@@ -27,9 +27,8 @@ function Login() {
           password: password,
         })
       );
-      console.log(response);
       if (isAuthenticated && user.dashboard) {
-        navigate("/dashboard");
+        navigate("/");
       }
       console.log("Logged in successfully:", response.data);
     } catch (error) {
