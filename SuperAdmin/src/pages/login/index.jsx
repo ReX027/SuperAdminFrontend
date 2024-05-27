@@ -21,15 +21,15 @@ function Login() {
   }, [isAuthenticated, user?.Dashboard, navigate]);
   const handleLogin = async () => {
     try {
-      const response = dispatch(
+      dispatch(
         userLogin({
           email: email,
           password: password,
         })
-      );
-      if (isAuthenticated && user.dashboard) {
+      ).then(() => {
         navigate("/");
-      }
+      });
+
       console.log("Logged in successfully:", response.data);
     } catch (error) {
       setErrorMessage("Invalid email or password");

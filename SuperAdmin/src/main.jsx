@@ -6,9 +6,12 @@ import Login from "./pages/login";
 import ProtectedRoute from "./pages/protected/index.jsx";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./app/store.js";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./app/store.js";
 import CreateUser from "./pages/CreateUser/CreateUser.jsx";
+import Company from "./pages/Company/Company.jsx";
+import Payment from "./pages/Payment/Payment.jsx";
+import Recruiter from "./pages/Recruiter/Recruiter.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,19 +23,23 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
+            element: <h1>This is home Route</h1>,
+          },
+          {
+            path: "dashboard",
             element: <CreateUser />,
           },
           {
             path: "company",
-            element: <h1>This is company page</h1>,
+            element: <Company />,
           },
           {
             path: "payment",
-            element: <h1>This is payment page</h1>,
+            element: <Payment />,
           },
           {
             path: "recruiter",
-            element: <h1>This is recruiter page</h1>,
+            element: <Recruiter />,
           },
         ],
       },

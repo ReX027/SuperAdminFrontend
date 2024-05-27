@@ -12,7 +12,7 @@ function App() {
       <div className="container">
         <>
           <div className="sidebar">
-            <NavLink to={"/"}>Dashboard</NavLink>
+            <NavLink to={"/dashboard"}>Dashboard</NavLink>
             <NavLink to={"/company"}>Company</NavLink>
             <NavLink to={"/payment"}>Payment</NavLink>
             <NavLink to={"/recruiter"}>Recruiter</NavLink>
