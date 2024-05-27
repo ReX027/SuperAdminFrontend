@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../features/auth/authActions";
 import { useNavigate } from "react-router-dom";
+import { combineSlices } from "@reduxjs/toolkit";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("ranveer@rework.club");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
@@ -20,12 +21,15 @@ function Login() {
   }, [isAuthenticated, user?.Dashboard, navigate]);
   const handleLogin = async () => {
     try {
-      const response = dispatch(
+      dispatch(
         userLogin({
           email: email,
           password: password,
         })
-      );
+      ).then(() => {
+        navigate("/");
+      });
+
       console.log("Logged in successfully:", response.data);
     } catch (error) {
       setErrorMessage("Invalid email or password");
@@ -44,8 +48,7 @@ function Login() {
             onSubmit={(e) => {
               e.preventDefault();
               handleLogin();
-            }}
-          >
+            }}>
             <div>
               <label>Email:</label>
               <input
