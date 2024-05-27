@@ -1,15 +1,23 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { Outlet } from "react-router-dom";
+import "./style.scss";
+import { Outlet, NavLink } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Outlet />
+      <div className="container">
+        <div className="sidebar">
+          <NavLink to={"/dashboard"}>Dashboard</NavLink>
+          <NavLink to={"/company"}>Company</NavLink>
+          <NavLink to={"/payment"}>Payment</NavLink>
+          <NavLink to={"/recruiter"}>Recruiter</NavLink>
+        </div>
+        <div className="rightContainer">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 }
