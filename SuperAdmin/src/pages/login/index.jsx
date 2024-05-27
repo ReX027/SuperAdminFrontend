@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../features/auth/authActions";
 import { useNavigate } from "react-router-dom";
+import { combineSlices } from "@reduxjs/toolkit";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ function Login() {
   console.log("in login");
   useEffect(() => {
     if (isAuthenticated && user?.Dashboard) {
-      navigate("/dashboard");
+      navigate("/");
     }
   }, [isAuthenticated, user?.Dashboard, navigate]);
   const handleLogin = async () => {
@@ -26,6 +27,7 @@ function Login() {
           password: password,
         })
       );
+      console.log(response);
       if (isAuthenticated && user.dashboard) {
         navigate("/dashboard");
       }
