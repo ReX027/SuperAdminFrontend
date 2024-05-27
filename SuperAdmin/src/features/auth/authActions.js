@@ -1,8 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const backendURL = import.meta.env.VITE_BACKEND;
-// const backendURL = "https://backend-iota-steel.vercel.app";
+const backendURL = "http://localhost:3000";
 
 export const userLogin = createAsyncThunk(
   "auth/login",
@@ -15,8 +14,8 @@ export const userLogin = createAsyncThunk(
           withCredentials: true,
         }
       );
-
-      return data.data;
+      console.log(data, "hehehe");
+      return data;
     } catch (error) {
       // return custom error message from API if any
       if (error.response && error.response.data.message) {
