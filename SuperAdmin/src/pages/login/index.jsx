@@ -15,7 +15,7 @@ function Login() {
   console.log("in login");
   useEffect(() => {
     if (isAuthenticated && user?.Dashboard) {
-      navigate("/dashboard");
+      navigate("/");
     }
   }, [isAuthenticated, user?.Dashboard, navigate]);
   const handleLogin = async () => {
@@ -26,9 +26,6 @@ function Login() {
           password: password,
         })
       );
-      if (isAuthenticated && user.dashboard) {
-        navigate("/dashboard");
-      }
       console.log("Logged in successfully:", response.data);
     } catch (error) {
       setErrorMessage("Invalid email or password");
@@ -47,7 +44,8 @@ function Login() {
             onSubmit={(e) => {
               e.preventDefault();
               handleLogin();
-            }}>
+            }}
+          >
             <div>
               <label>Email:</label>
               <input
