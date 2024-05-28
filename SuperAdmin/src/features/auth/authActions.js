@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const backendURL = "http://localhost:3000";
+const backendURL = "http://localhost:4000";
 
 export const userLogin = createAsyncThunk(
   "auth/login",
@@ -14,11 +14,12 @@ export const userLogin = createAsyncThunk(
           withCredentials: true,
         }
       );
-      console.log(data, "hehehe");
-      return data;
+      console.log(data);
+      return data.user;
     } catch (error) {
+      console.log(error, "login error");
       // return custom error message from API if any
-      if (error.response && error.response.data.message) {
+      if (error.response && error.res) {
         return rejectWithValue(error.response.data.message);
       } else {
         return rejectWithValue(error.message);

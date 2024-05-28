@@ -4,7 +4,7 @@ const Payment = () => {
   const { user } = useSelector((state) => state.auth);
   return (
     <>
-      {!user.user.payment ? (
+      {!user?.payment ? (
         <div>
           <h1 style={{ textAlign: "center" }}>⚠️</h1>
           <h1> Not authorised for this route</h1>

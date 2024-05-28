@@ -38,7 +38,7 @@ const CreateUser = () => {
   }
   return (
     <>
-      {!user.user.Dashboard ? (
+      {!user?.Dashboard ? (
         <div>
           <h1 style={{ textAlign: "center" }}>⚠️</h1>
           <h1> Not authorised for this route</h1>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Outlet, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userLogout } from "./features/auth/authActions";
-import Error from "./pages/Error";
+
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,10 +19,11 @@ function App() {
       <div className="container">
         <>
           <div className="sidebar">
-            <NavLink to={"/"}>Dashboard</NavLink>
+            <NavLink to={"/dashboard"}>Dashboard</NavLink>
             <NavLink to={"/company"}>Company</NavLink>
             <NavLink to={"/payment"}>Payment</NavLink>
             <NavLink to={"/recruiter"}>Recruiter</NavLink>
+            <NavLink to={"/candidate"}>Candidate</NavLink>
           </div>
           <div
             style={{

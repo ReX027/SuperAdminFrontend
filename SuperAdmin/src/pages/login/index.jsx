@@ -8,10 +8,12 @@ import { combineSlices } from "@reduxjs/toolkit";
 function Login() {
   const [email, setEmail] = useState("ranveer@rework.club");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, error } = useSelector(
+    (state) => state.auth
+  );
   const { user } = useSelector((state) => state.auth);
   console.log("in login");
   useEffect(() => {
@@ -26,13 +28,10 @@ function Login() {
           email: email,
           password: password,
         })
-      ).then(() => {
-        navigate("/");
-      });
-
-      console.log("Logged in successfully:", response.data);
+      ).then(() => navigate("/"));
+      //   console.log("Logged in successfully:", response.data);
     } catch (error) {
-      setErrorMessage("Invalid email or password");
+      //   setErrorMessage("Invalid email or password");
       console.error("Login failed:", error);
     }
   };
@@ -48,7 +47,8 @@ function Login() {
             onSubmit={(e) => {
               e.preventDefault();
               handleLogin();
-            }}>
+            }}
+          >
             <div>
               <label>Email:</label>
               <input
@@ -69,7 +69,7 @@ function Login() {
             </div>
             <button type="submit">Login</button>
           </form>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
       )}
     </>

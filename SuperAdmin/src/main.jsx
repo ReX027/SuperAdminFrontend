@@ -12,6 +12,7 @@ import CreateUser from "./pages/CreateUser/CreateUser.jsx";
 import Company from "./pages/Company/Company.jsx";
 import Payment from "./pages/Payment/Payment.jsx";
 import Recruiter from "./pages/Recruiter/Recruiter.jsx";
+import Candidate from "./pages/Candidates/Candidates.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           {
             path: "recruiter",
             element: <Recruiter />,
+          },
+          {
+            path: "candidate",
+            element: <Candidate />,
           },
         ],
       },

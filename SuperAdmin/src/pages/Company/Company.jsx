@@ -4,7 +4,7 @@ const Company = () => {
   const { user } = useSelector((state) => state.auth);
   return (
     <>
-      {!user.user.company ? (
+      {!user?.company ? (
         <div>
           <h1 style={{ textAlign: "center" }}>⚠️</h1>
           <h1> Not authorised for this route</h1>
